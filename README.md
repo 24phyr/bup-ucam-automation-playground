@@ -26,7 +26,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 3. Refer the <a href="https://github.com/24phyr/bup-ucam-marks-notifier/blob/main/.env.example">.env.example</a> to set your .env file up
+### Refer the <a href="https://github.com/24phyr/bup-ucam-marks-notifier/blob/main/.env.example">.env.example</a> to set your .env file up
 
 ## Useful Links
 
