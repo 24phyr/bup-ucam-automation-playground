@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import json
 import os
 import time
 from dotenv import load_dotenv
@@ -103,75 +104,19 @@ viewdetail_elem7.click()
 time.sleep(3)
 c7 = LabCourse(browser.find_element(By.XPATH, "(//b[contains(text(),'7')])[1]").text, browser.find_element(By.ID, 'ctl00_MainContainer_gvExamMarkSummary_ctl08_lblFormalCode').text, browser.find_element(By.ID, 'ctl00_MainContainer_gvExamMarkSummary_ctl08_lblTitle').text)
 
-print(c1.serial)
-print(c1.code)
-print(c1.title)
-print(c1.CT1)
-print(c1.CT2)
-print(c1.CT3)
-print(c1.CT4)
-print(c1.mid)
-print(c1.assignment)
-print(c1.attendance)
-print("==================")
-print(c2.serial)
-print(c2.code)
-print(c2.title)
-print(c2.quiz)
-print(c2.report)
-print(c2.performance)
-print(c2.viva)
-print(c2.attendance)
-print("==================")
-print(c3.serial)
-print(c3.code)
-print(c3.title)
-print(c3.CT1)
-print(c3.CT2)
-print(c3.CT3)
-print(c3.CT4)
-print(c3.mid)
-print(c3.assignment)
-print(c3.attendance)
-print("==================")
-print(c4.serial)
-print(c4.code)
-print(c4.title)
-print(c4.CT1)
-print(c4.CT2)
-print(c4.CT3)
-print(c4.CT4)
-print(c4.mid)
-print(c4.assignment)
-print(c4.attendance)
-print("==================")
-print(c5.serial)
-print(c5.code)
-print(c5.title)
-print(c5.quiz)
-print(c5.report)
-print(c5.performance)
-print(c5.viva)
-print(c5.attendance)
-print("==================")
-print(c6.serial)
-print(c6.code)
-print(c6.title)
-print(c6.CT1)
-print(c6.CT2)
-print(c6.CT3)
-print(c6.CT4)
-print(c6.mid)
-print(c6.assignment)
-print(c6.attendance)
-print("==================")
-print(c7.serial)
-print(c7.code)
-print(c7.title)
-print(c7.quiz)
-print(c7.report)
-print(c7.performance)
-print(c7.viva)
-print(c7.attendance)
+course_data = {
+    "Theory Course": [
+        {"Serial": c1.serial, "Course Code": c1.code, "Course Title": c1.title, "Class Test 1": c1.CT1, "Class Test 2": c1.CT2, "Class Test 3": c1.CT3, "Class Test 4": c1.CT4, "Mid Term": c1.mid, "Project paper/Assignments /Term Paper (Individual) including Presentation": c1.assignment, "Attendance": c1.attendance},
+        {"Serial": c3.serial, "Course Code": c3.code, "Course Title": c3.title, "Class Test 1": c3.CT1, "Class Test 2": c3.CT2, "Class Test 3": c3.CT3, "Class Test 4": c3.CT4, "Mid Term": c3.mid, "Project paper/Assignments /Term Paper (Individual) including Presentation": c3.assignment, "Attendance": c3.attendance},
+        {"Serial": c4.serial, "Course Code": c4.code, "Course Title": c4.title, "Class Test 1": c4.CT1, "Class Test 2": c4.CT2, "Class Test 3": c4.CT3, "Class Test 4": c4.CT4, "Mid Term": c4.mid, "Project paper/Assignments /Term Paper (Individual) including Presentation": c4.assignment, "Attendance": c4.attendance},
+        {"Serial": c6.serial, "Course Code": c6.code, "Course Title": c6.title, "Class Test 1": c6.CT1, "Class Test 2": c6.CT2, "Class Test 3": c6.CT3, "Class Test 4": c6.CT4, "Mid Term": c6.mid, "Project paper/Assignments /Term Paper (Individual) including Presentation": c6.assignment, "Attendance": c6.attendance}
+    ],
+    "Lab Course": [
+        {"Serial": c2.serial, "Course Code": c2.code, "Course Title": c2.title, "Quiz": c2.quiz, "Home Assignment / Report": c2.report, "Class Performance / Observation": c2.performance, "Viva": c2.viva, "Attendnace": c2.attendance},
+        {"Serial": c5.serial, "Course Code": c5.code, "Course Title": c5.title, "Quiz": c5.quiz, "Home Assignment / Report": c5.report, "Class Performance / Observation": c5.performance, "Viva": c5.viva, "Attendnace": c5.attendance},
+        {"Serial": c7.serial, "Course Code": c7.code, "Course Title": c7.title, "Quiz": c7.quiz, "Home Assignment / Report": c7.report, "Class Performance / Observation": c7.performance, "Viva": c7.viva, "Attendnace": c7.attendance}
+    ]
+}
 
-# TODO: add JSON functionality
+with open("output.json", "w") as outfile:
+    json.dump(course_data, outfile, indent=4)
