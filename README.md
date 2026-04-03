@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> The recent **UI update of the UCAM Portal** has broken this notifier.
+
+
 # BUP UCAM Marks Notifier [WIP]
 
 This Project aims to provide real time notification of Uploaded/Updated Marks via Selenium.
